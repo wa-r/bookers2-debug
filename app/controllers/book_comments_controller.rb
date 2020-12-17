@@ -6,7 +6,7 @@ class BookCommentsController < ApplicationController
     comment.user_id = current_user.id
     comment.book_id = book.id
     comment.save
-    redirect_to book_path(book.id)
+    redirect_back(fallback_location: root_path)
   end
   
   def destroy
