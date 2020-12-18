@@ -1,0 +1,39 @@
+<% if @model == "user" %>
+  <h2>Users search for "<%= @value %>"</h2>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @datas.each do |data| %>
+        <tr>
+          <td><%= attachment_image_tag(data, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+          <td><%= data.name %></td>
+          <td><%= data.introduction %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% elsif @model == "book" %>
+  <h2>Books search for "<%= @value %>"</h2>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>opinion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @datas.each do |data| %>
+        <tr>
+          <td><%= attachment_image_tag(data.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+          <td><%= data.title %></td>
+          <td><%= data.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
