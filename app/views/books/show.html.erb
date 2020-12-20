@@ -44,7 +44,15 @@
           <% end %>
         </tr>
       </table>
-　　　<%= render 'book_comments/comment-form', book: @book, book_comment: @book_comment %>
+      <div id="comment-list_<%= @book.id %>">
+        <%= render partial: 'book_comments/comment-list', locals: {book: @book} %>
+      </div>
+      <div class="new-comments">
+        <%= form_with(model:[@book, @book_comment], remote: true) do |f| %>
+          <%= f.text_area :comment, size: "80x6"%>
+          <%= f.submit '送信' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
