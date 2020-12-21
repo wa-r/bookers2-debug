@@ -7,7 +7,7 @@ class User < ApplicationRecord
   after_create :send_welcome_mail
   
   def send_welcome_mail
-    UserMailer.user_welcome_mail(self).deliver
+    ThanksMailer.user_welcome_mail(self).deliver
   end
   
   attachment :profile_image, destroy: false
